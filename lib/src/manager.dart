@@ -64,6 +64,7 @@ class Manager extends EventEmitter {
     options['path'] ??= '/socket.io';
     nsps = {};
     subs = [];
+    this.uuid = uuid;
     this.options = options;
     reconnection = options['reconnection'] != false;
     reconnectionAttempts =
