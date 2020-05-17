@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 import 'dart:js';
-import 'package:socket_io_client/src/engine/transport/polling_transport.dart';
+import 'package:custom_socket/src/engine/transport/polling_transport.dart';
 
 /// jsonp_transport.dart
 ///

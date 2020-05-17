@@ -1,4 +1,4 @@
-name: socket_io_client
+name: custom_socket
 description: Dartlang port of socket.io-client for web, flutter, dartvm to use
 version: 0.9.10
 author: jumperchen <jumperchen@potix.com>

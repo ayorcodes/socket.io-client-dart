@@ -1,5 +1,5 @@
 ///
-/// socket_io_client.dart
+/// custom_socket.dart
 ///
 /// Purpose:
 ///
@@ -11,22 +11,22 @@
 /// Copyright (C) 2017 Potix Corporation. All Rights Reserved.
 ///
 
-library socket_io_client;
+library custom_socket;
 
 import 'package:logging/logging.dart';
-import 'package:socket_io_client/src/socket.dart';
+import 'package:custom_socket/src/socket.dart';
 import 'package:socket_io_common/src/engine/parser/parser.dart' as parser;
-import 'package:socket_io_client/src/engine/parseqs.dart';
-import 'package:socket_io_client/src/manager.dart';
+import 'package:custom_socket/src/engine/parseqs.dart';
+import 'package:custom_socket/src/manager.dart';
 
-export 'package:socket_io_client/src/socket.dart';
+export 'package:custom_socket/src/socket.dart';
 
 // Protocol version
 final protocol = parser.protocol;
 
 final Map<String, dynamic> cache = {};
 
-final Logger _logger = Logger('socket_io_client');
+final Logger _logger = Logger('custom_socket');
 
 ///
 /// Looks up an existing `Manager` for multiplexing.
@@ -60,7 +60,7 @@ Socket _lookup(uri, uuid, opts) {
     _logger.fine('ignoring socket cache for $uri');
     io = Manager(uri: uri, options: opts, uuid: uuid);
   } else {
-    io = Manager(uri: uri, options: opts, uuid: uuid);
+    io = cache[id] ??= Manager(uri: uri, options: opts, uuid: uuid);
   }
   if (parsed.query.isNotEmpty && opts['query'] == null) {
     opts['query'] = parsed.query;

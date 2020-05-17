@@ -7,9 +7,9 @@ import 'dart:html';
 import 'dart:typed_data';
 import 'package:logging/logging.dart';
 import 'package:socket_io_common/src/util/event_emitter.dart';
-import 'package:socket_io_client/src/engine/transport/polling_transport.dart';
+import 'package:custom_socket/src/engine/transport/polling_transport.dart';
 
-final Logger _logger = Logger('socket_io_client:transport.XHRTransport');
+final Logger _logger = Logger('custom_socket:transport.XHRTransport');
 
 class XHRTransport extends PollingTransport {
   int requestTimeout;

@@ -13,8 +13,8 @@ import 'dart:typed_data';
 /// Copyright (C) 2017 Potix Corporation. All Rights Reserved.
 import 'package:logging/logging.dart';
 import 'package:socket_io_common/src/util/event_emitter.dart';
-import 'package:socket_io_client/src/manager.dart';
-import 'package:socket_io_client/src/on.dart' as util;
+import 'package:custom_socket/src/manager.dart';
+import 'package:custom_socket/src/on.dart' as util;
 import 'package:socket_io_common/src/parser/parser.dart';
 
 ///
@@ -40,7 +40,7 @@ const List EVENTS = [
   'pong'
 ];
 
-final Logger _logger = Logger('socket_io_client:Socket');
+final Logger _logger = Logger('custom_socket:Socket');
 
 ///
 /// `Socket` constructor.
