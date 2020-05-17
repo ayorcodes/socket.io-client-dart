@@ -54,6 +54,7 @@ class Socket extends EventEmitter {
   Socket json;
   num ids;
   Map acks;
+  String uuid;
   bool connected;
   bool disconnected;
   List sendBuffer;
@@ -63,7 +64,7 @@ class Socket extends EventEmitter {
   Map flags;
   String id;
 
-  Socket(this.io, this.nsp, this.opts) {
+  Socket(this.io, this.nsp, this.uuid, this.opts) {
     json = this; // compat
     ids = 0;
     acks = {};
@@ -155,9 +156,7 @@ class Socket extends EventEmitter {
       var packet = {
         'type': binary ? BINARY_EVENT : EVENT,
         'data': sendData,
-        'options': {
-          'compress': flags?.isNotEmpty == true && flags['compress']
-        }
+        'options': {'compress': flags?.isNotEmpty == true && flags['compress']}
       };
 
       // event ack callback

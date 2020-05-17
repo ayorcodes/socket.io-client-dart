@@ -45,6 +45,7 @@ class Manager extends EventEmitter {
   _Backoff backoff;
   String readyState;
   String uri;
+  String uuid;
   List connecting;
   num lastPing;
   bool encoding;
@@ -57,7 +58,7 @@ class Manager extends EventEmitter {
   bool autoConnect;
   bool skipReconnect;
 
-  Manager({uri, Map options}) {
+  Manager({uri, Map options, uuid}) {
     options = options ?? <dynamic, dynamic>{};
 
     options['path'] ??= '/socket.io';
@@ -118,8 +119,9 @@ class Manager extends EventEmitter {
   /// @api private
   ///
   String generateId(String nsp) {
-    if (nsp.startsWith('/')) nsp = nsp.substring(1);
-    return (nsp.isEmpty ? '' : (nsp + '#')) + engine.id;
+    /* if (nsp.startsWith('/')) nsp = nsp.substring(1);
+    return (nsp.isEmpty ? '' : (nsp + '#')) + engine.id; */
+    return uuid;
   }
 
   ///
@@ -346,7 +348,7 @@ class Manager extends EventEmitter {
     };
 
     if (socket == null) {
-      socket = Socket(this, nsp, opts);
+      socket = Socket(this, nsp, uuid, opts);
       nsps[nsp] = socket;
       socket.on('connecting', onConnecting);
       socket.on('connect', (_) {

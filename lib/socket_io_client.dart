@@ -40,9 +40,9 @@ final Logger _logger = Logger('socket_io_client');
 ///
 /// @api public
 ///
-Socket io(uri, [opts]) => _lookup(uri, opts);
+Socket io(uri, uuid, [opts]) => _lookup(uri, uuid, opts);
 
-Socket _lookup(uri, opts) {
+Socket _lookup(uri, opts, uuid) {
   opts = opts ?? <dynamic, dynamic>{};
 
   var parsed = Uri.parse(uri);
