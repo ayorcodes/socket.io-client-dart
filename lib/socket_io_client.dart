@@ -42,7 +42,7 @@ final Logger _logger = Logger('socket_io_client');
 ///
 Socket io(uri, uuid, [opts]) => _lookup(uri, uuid, opts);
 
-Socket _lookup(uri, opts, uuid) {
+Socket _lookup(uri, uuid, opts) {
   opts = opts ?? <dynamic, dynamic>{};
 
   var parsed = Uri.parse(uri);
