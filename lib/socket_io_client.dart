@@ -58,9 +58,9 @@ Socket _lookup(uri, uuid, opts) {
 
   if (newConnection) {
     _logger.fine('ignoring socket cache for $uri');
-    io = Manager(uri: uri, options: opts);
+    io = Manager(uri: uri, options: opts, uuid: uuid);
   } else {
-    io = cache[id] ??= Manager(uri: uri, options: opts);
+    io = cache[id] ??= Manager(uri: uri, options: opts, uuid: uuid);
   }
   if (parsed.query.isNotEmpty && opts['query'] == null) {
     opts['query'] = parsed.query;
